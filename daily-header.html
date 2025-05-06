@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=100%, initial-scale=1.0"/>
+  <title>Daily Tech Header</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    #customHeader {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      padding: 20px;
+      box-sizing: border-box;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(2px);
+      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4);
+    }
+
+    #greeting {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    #techFact {
+      font-size: 18px;
+      margin-top: 10px;
+      max-width: 90%;
+    }
+  </style>
+</head>
+<body>
+  <div id="customHeader">
+    <h1 id="greeting">Hello, there</h1>
+    <p id="techFact">Loading your daily fact...</p>
+  </div>
+
+  <script>
+    const backgrounds = [
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image1.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image2.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image3.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image4.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image5.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image6.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image7.jpeg',
+      'https://okatlas.sharepoint.com/sites/Home/assets/Images/Image8.jpeg'
+    ];
+
+    const techFacts = [
+      "The first computer bug was a moth trapped in a Harvard computer in 1947.",
+      "Email was invented in 1971—decades before the web. The first email sent? QWERTYUIOP.",
+      "Firefox’s logo isn’t a fox—it’s a red panda.",
+      "The first 1GB hard drive weighed over 500 pounds.",
+      "Wi-Fi stands for literally nothing—it’s a marketing name.",
+      "Bluetooth is named after a Viking king, Harald Bluetooth.",
+      "You blink 66% less while looking at a screen.",
+      "The first webcam monitored a coffee pot at Cambridge.",
+      "The first domain ever registered was symbolics.com in 1985.",
+      "Steve Jobs built Apple’s first computer in a garage.",
+      "3D printing was invented in the 1980s.",
+      "Google was originally called BackRub. Thankfully, for obvious reasons - they changed it.",
+      "The first mobile phone call was made in 1973.",
+      "Apollo computers had less power than a basic calculator.",
+      "The @ symbol existed long before email—it was used in accounting.",
+      "Floppy disks held 1.44MB—smaller than most memes.",
+      "The first computer mouse was made of wood. Ew.",
+      "The pop-up ad was invented in the late ’90s—and its creator regrets it.",
+      "Ada Lovelace wrote the first computer algorithm in the 1800s.",
+      "HTML is not a programming language. Sorry, not sorry.",
+      "JavaScript was written in just 10 days.",
+      "YouTube was originally meant to be a dating site. I mean, I guess it still is if you ask some creators.",
+      "The original iPod could hold 1,000 songs—and that was mind-blowing.",
+      "Roombas build maps of your home as they clean. Smart lil' guys.",
+      "QR codes were invented in 1994 to track car parts.",
+      "AI beat the world’s top Go player in 2016—10 years ahead of schedule.",
+      "Emojis were first created in Japan in 1999. ヽ(°〇°)ﾉ ",
+      "Only about 4% of the internet is publicly indexed.",
+      "A Boeing 787 runs on over 6 million lines of code. Pilots don't know a lick of it.",
+      "Linux powers most of the world’s supercomputers.",
+      "CAPTCHA tests help digitize old books behind the scenes.",
+      "CDs hold 700MB—about 486 floppy disks’ worth.",
+      "Kodak made the first digital camera… then shelved it. Whoops!",
+      "MP3s came from a German sound engineer in the ’90s.",
+      "NASA still uses software from the 1970s. Restructuring is hard!",
+      "Apollo 11’s guidance system had just 64KB of memory. Your toaster can do better.",
+      "Touchscreens were invented in 1965. Now they're just covered in toddler sticky fingers.",
+      "Some 3D printers can create living tissue (no, not human organs… yet).",
+      "Electric cars were more common than gas in the early 1900s. Weird how we regressed.",
+      "The original Xbox logo had a weird green slime design. Thankfully, they changed it.",
+      "Teslas come with hidden video games on the dash. Go ahead, try it out!",
+      "Ctrl+Alt+Del was a shortcut for developers—not meant for you.",
+      "The save icon is based on a floppy disk most people have never seen. Feel old yet?",
+      "Google handles over 8 billion searches a day. Wonder what the most of it is...",
+      "Spam email is named after the canned meat, thanks to Monty Python.",
+      "The word 'cyberspace' came from a 1982 sci-fi short story 'Burning Chrome'.",
+      "iPhones revolutionized photography more than most cameras ever did. Too bad they didn't keep up.",
+      "Some satellites are older than social media.",
+      "Minecraft was coded by one guy—in six days. Thanks, Notch!",
+      "Your microwave has more computing power than Apollo 11. Phew!",
+      "NASA lost track of a $125 million Mars orbiter because of a metric vs. imperial mix-up.",
+      "Uber’s first ride was taken by one of the company’s co-founders.",
+      "Apple almost named the iPhone the 'Telepod'. Not quite as catchy.",
+      "Google Street View cars have traveled over 10 million miles.",
+      "Adobe Photoshop was originally called 'Display'.",
+  "The first computer game was a tic-tac-toe simulator made in 1952.",
+  "Nintendo was founded in 1889—as a playing card company.",
+  "The term 'bug' for a computer glitch came from engineers finding an actual insect.",
+  "The longest keyboard smash used to test a keyboard lasted 8 hours.",
+  "There are vending machines in Japan that only accept Bitcoin.",
+  "Modern planes upload engine data mid-flight for predictive maintenance.",
+  "Tesla cars have a 'fart mode'. Yes, really.",
+  "The ISS orbits Earth every 90 minutes.",
+  "Some fitness trackers can detect illnesses before symptoms show.",
+  "Digital assistants like Alexa and Siri record more data than you think.",
+  "Facebook used to be called TheFacebook.",
+  "Voice-to-text dates back to the 1950s.",
+  "The oldest known computer is the Antikythera mechanism—over 2,000 years old.",
+  "Spam filters use machine learning to constantly adapt to new tactics.",
+  "The most-used password is still '123456'. Please don’t be that person.",
+  "There are over 6,000 programming languages in the world.",
+  "The world's first website is still live: http://info.cern.ch",
+  "China has more facial recognition cameras than any other country.",
+  "One zettabyte equals a billion terabytes.",
+  "USB was meant to be reversible—but the tech wasn’t ready yet.",
+  "Electricity bills rise slightly during Netflix binge seasons.",
+  "NASA is testing internet for the Moon.",
+  "A quantum computer can solve in seconds what takes years on traditional machines.",
+  "Smart fridges can tweet. Because why not.",
+  "Websites using dark mode can save battery life on OLED screens.",
+  "Augmented reality has been used to train astronauts.",
+  "Your smartphone contains more bacteria than a toilet seat. Wipe it down.",
+  "Bluetooth and Wi-Fi use the same 2.4GHz band.",
+  "Tesla’s Autopilot uses over a dozen cameras and sensors.",
+  "Netflix uses AI to choose your thumbnail images based on what you click.",
+  "E-waste is the fastest-growing waste stream in the world.",
+  "The first email ever sent was simply 'QWERTYUIOP'.",
+  "TV remotes use infrared beams, which you can only see through your phone’s camera.",
+  "Cloud storage means your data lives on someone else’s computer.",
+  "LED bulbs use about 85% less energy than incandescent ones.",
+  "Robots are assembling robots. We’re there now.",
+  "Smart toilets in Japan play music to hide bathroom sounds.",
+  "In South Korea, internet speeds are some of the fastest in the world.",
+  "Some smart doorbells recognize your face—and your dog’s.",
+  "Spotify’s algorithm knows your music taste better than your ex ever did.",
+  "Emoji were once rejected by the Unicode Consortium. Now they’re global.",
+  "Your fingerprints aren’t unique to phones—some twins can confuse scanners.",
+  "Old satellites are a growing problem—they're space junk now.",
+  "Mobile phones carry more bacteria than elevator buttons.",
+  "Every Google search produces about 0.2g of CO₂.",
+  "The first emoji was a smiley face made with punctuation in 1982.",
+  "Tesla once added a light show mode for holiday fun.",
+  "Bitcoin mining consumes more electricity than some countries.",
+  "USB-C is now required on all new phones in the EU starting 2024.",
+  "AI is now being used to write movie scripts. We’ll see how that goes.",
+  "Apple removed the headphone jack to make room for more tech. And courage.",
+  "The Mars Rover sings 'Happy Birthday' to itself once a year.",
+  "Elon Musk once sold flame throwers as a marketing stunt.",
+  "The most expensive keyboard in the world costs over $10,000.",
+  "E-paper displays use no power when static.",
+  "Instagram started as a location-sharing app.",
+  "Smart mirrors can tell you the weather—and compliment your outfit.",
+  "Some AI art generators have created paintings worth thousands.",
+  "The first tweet ever sent was 'just setting up my twttr'.",
+  "Snapchat’s original name was Picaboo.",
+  "A single YouTube video once crashed a classroom’s entire Wi-Fi.",
+  "Amazon’s drones can deliver in under 30 minutes—where legal.",
+  "Websites used to have 'under construction' GIFs as a flex.",
+  "Most people never change their Wi-Fi router password.",
+  "Touch ID was first introduced on the iPhone 5s.",
+  "Some 3D printers can print food. Pizza, mostly.",
+  "Old iPhones slow down because of battery aging—Apple got sued for that.",
+  "Facial recognition AI struggles with identical twins.",
+  "You can mine crypto using a PlayStation (but don’t).",
+  "Cyberpunk 2077 was delayed more times than Duke Nukem Forever.",
+  "Wi-Fi signals can be used to detect people through walls. No joke.",
+  "Robot dogs are being tested by police departments.",
+  "NASA’s Voyager probes are still sending data after 45+ years.",
+  "Typing in all caps online started with people who didn’t know how to turn it off.",
+  "Zoom grew 30x in users in just four months during 2020.",
+  "A password manager is one of the best tools you’re probably not using.",
+  "The first VR headset was built in 1968 and weighed over 8 pounds.",
+  "You can 3D print your own custom phone case. Or a ukulele. Or both."
+
+    ];
+
+    function getDailyIndex(listLength) {
+      const today = new Date();
+      const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / 86400000);
+      return dayOfYear % listLength;
+    }
+
+    function getUserName() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get("user") || "there";
+    }
+
+    function initHeader() {
+      const user = getUserName();
+      const fact = techFacts[getDailyIndex(techFacts.length)];
+      const bg = backgrounds[getDailyIndex(backgrounds.length)];
+
+      document.getElementById("greeting").innerText = `Hello, ${user}`;
+      document.getElementById("techFact").innerText = fact;
+      document.getElementById("customHeader").style.backgroundImage = `url('${bg}')`;
+    }
+
+    document.addEventListener("DOMContentLoaded", initHeader);
+  </script>
+</body>
+</html>
